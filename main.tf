@@ -75,10 +75,7 @@ resource "azurerm_mysql_flexible_server" "mysql_flexible_server" {
 
 resource "azurerm_mysql_flexible_database" "mysql_flexible_db" {
   depends_on = [azurerm_mysql_flexible_server.mysql_flexible_server]
-  for_each = {
-    for k, v in toset(var.databases) : k => v
-    if var.databases != null
-  }
+  for_each            = var.databases != null ? { for k, v in var.databases : k => v if v != null } : {}
   name                = each.value.name
   resource_group_name = var.resource_group_name
   server_name         = azurerm_mysql_flexible_server.mysql_flexible_server.name
@@ -88,14 +85,11 @@ resource "azurerm_mysql_flexible_database" "mysql_flexible_db" {
 
 resource "azurerm_mysql_flexible_server_configuration" "mysql_configuration" {
   depends_on = [azurerm_mysql_flexible_server.mysql_flexible_server]
-  for_each = {
-    for k, v in toset(var.mysql_configuration) : k => v
-    if var.mysql_configuration != null
-  }
-  name                = each.key
+  for_each            = var.mysql_configuration != null ? { for k, v in var.mysql_configuration : k => v if v != null } : {}
+  name                = each.value.name
   resource_group_name = var.resource_group_name
   server_name         = azurerm_mysql_flexible_server.mysql_flexible_server.name
-  value               = each.value
+  value               = each.value.value
 }
 
 resource "azurerm_role_assignment" "mysql_reader" {

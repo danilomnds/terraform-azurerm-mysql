@@ -86,8 +86,8 @@ output "configs" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| name | eventhub namespace name | `string` | n/a | `Yes` |
-| resource_group_name | resource group where the ACR will be placed | `string` | n/a | `Yes` |
+| name | mysql flex server name | `string` | n/a | `Yes` |
+| resource_group_name | the name of the resource group in which the MySQL Flexible Server exists | `string` | n/a | `Yes` |
 | location | azure region | `string` | n/a | `Yes` |
 | administrator_login | the administrator login for the mysql flexible server | `string` | `mysqladmin` | No |
 | administrator_password | the password associated with the administrator_login for the mysql flexible server | `string` | n/a | No |
