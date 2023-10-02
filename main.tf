@@ -63,7 +63,7 @@ resource "azurerm_mysql_flexible_server" "mysql_flexible_server" {
       size_gb           = lookup(storage.value, "size_gb", null)
     }
   }
-  version = var.version
+  version = var.mysql_version
   zone    = var.zone
   tags    = local.tags
   lifecycle {

@@ -116,7 +116,7 @@ variable "storage" {
   default = null
 }
 
-variable "version" {
+variable "mysql_version" {
   description = "Version of mysql Flexible Server. Possible values are : https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server#version."
   type        = string
 }

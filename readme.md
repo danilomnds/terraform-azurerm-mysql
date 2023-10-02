@@ -25,7 +25,7 @@ module "mysql-flex-<system>-<env>" {
   name                = "mysql-flex-<system>-<env>"
   location            = <location>
   resource_group_name = <resource group name>
-  version             = <version>
+  mysql_version       = <version>
   sku_name            = <virtual machine shape>
   delegated_subnet_id = "subnet id"
   private_dns_zone_id = "private dns zone id"
@@ -68,6 +68,18 @@ module "mysql-flex-<system>-<env>" {
   ]
   azure_ad_groups = ["group 1 that will have reader access on mysql", "group 2"]
 }
+output "mysql-name" {
+  value = module.mysql-flex-<system>-<env>.name
+}
+output "mysql-id" {
+  value = module.mysql-flex-<system>-<env>.id
+}
+output "dbs" {
+  value = module.mysql-flex-<system>-<env>.dbs
+}
+output "configs" {
+  value = module.mysql-flex-<system>-<env>.configs
+}
 ```
 
 ## Input variables
@@ -93,7 +105,7 @@ module "mysql-flex-<system>-<env>" {
 | sku_name | the sku name for the mysql flexible server | `string` | n/a | `Yes` |
 | source_server_id | the resource id of the source mysql flexible server to be restored | `string` | n/a | No |
 | storage | a block as defined below | `object({})` | n/a | No |
-| version | the version of the mysql flexible server to use | `string` | n/a | `Yes` |
+| mysql_version | the version of the mysql flexible server to use | `string` | n/a | `Yes` |
 | zone | specifies the availability zone in which this mysql flexible server should be located | `string` | n/a | No |
 | tags | tags for the resource | `map(string)` | `{}` | No |
 | azure_ad_groups | list of azure AD groups that will be granted the Application Insights Component Contributor role  | `list` | `[]` | No |
