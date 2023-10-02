@@ -86,8 +86,8 @@ output "configs" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| name | eventhub namespace name | `string` | n/a | `Yes` |
-| resource_group_name | resource group where the ACR will be placed | `string` | n/a | `Yes` |
+| name | mysql flex server name | `string` | n/a | `Yes` |
+| resource_group_name | the name of the resource group in which the MySQL Flexible Server exists | `string` | n/a | `Yes` |
 | location | azure region | `string` | n/a | `Yes` |
 | administrator_login | the administrator login for the mysql flexible server | `string` | `mysqladmin` | No |
 | administrator_password | the password associated with the administrator_login for the mysql flexible server | `string` | n/a | No |
@@ -131,7 +131,7 @@ output "configs" {
 | maintenance_window | day_of_week | the day of week for maintenance window | `number` | `0` | No |
 | maintenance_window | start_hour | the start hour for maintenance window | `number` | `0` | No |
 | maintenance_window | start_minute | the start minute for maintenance window | `number` | `0` | No |
-| storage | auto_grow_enabled | the day of week for maintenance window | `bool` | `True` | No |
+| storage | auto_grow_enabled | should storage auto grow be enabled?  | `bool` | `True` | No |
 | storage | iops | the storage iops for the mysql flexible server | `number` | `null` | No |
 | storage | size_gb | the max storage allowed for the mysql flexible server | `number` | `null` | No |
 | databases | name | database name | `string` | n/a | `Yes` |
@@ -152,7 +152,9 @@ output "configs" {
 ## Documentation
 MySQL Flexible Server: <br>
 [https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server)
+
 MySQL Flexible Database: <br>
-[https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_database](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_database)
+[https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_database](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_database) 
+
 MySQL Flexible Configuration: <br>
 [https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server_configuration](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server_configuration)
